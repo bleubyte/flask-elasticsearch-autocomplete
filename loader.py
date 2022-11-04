@@ -7,7 +7,7 @@ es = Elasticsearch(hosts=["http://127.0.0.1:9200"])
 
 print(f"Connected to ElasticSearch cluster `{es.info().body['cluster_name']}`")
 
-with open('farc.yml', 'r') as file:
+with open('findings.yml', 'r') as file:
     for doc in yaml.safe_load_all(file):
         document = {
                     "title": doc['title'],
