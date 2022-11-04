@@ -1,6 +1,5 @@
 from elasticsearch import Elasticsearch
 
-#import csv
 import yaml
 
 
