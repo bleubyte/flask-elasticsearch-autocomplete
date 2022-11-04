@@ -1,3 +1,7 @@
+'''
+This is a modified version of the original flask-elasticsearch-autocomplete https://github.com/ahnaf-zamil/flask-elasticsearch-autocomplete
+Credits go to ahnaf-zamil @DevGuyAhnaf 
+'''
 from flask import Flask, request, render_template
 from elasticsearch import Elasticsearch
 
