@@ -17,11 +17,11 @@ def home():
 def search_autocomplete():
     query = request.args["q"].lower()
     tokens = query.split(" ")
-
+    # Search findings description text and return the title 
     clauses = [
         {
             "span_multi": {
-                "match": {"fuzzy": {"name": {"value": i, "fuzziness": "AUTO"}}}
+                "match": {"fuzzy": {"description": {"value": i, "fuzziness": "AUTO"}}}
             }
         }
         for i in tokens
@@ -33,9 +33,10 @@ def search_autocomplete():
         }
     }
 
-    resp = es.search(index="cars", query=payload, size=MAX_SIZE)
-    return [result['_source']['name'] for result in resp['hits']['hits']]
-
+    resp = es.search(index="findings", query=payload, size=MAX_SIZE)
+    # We return the title
+    return [result['_source']['title'] for result in resp['hits']['hits']]
+    
 
 if __name__ == "__main__":
     app.run(debug=True)
